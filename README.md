@@ -2,10 +2,12 @@
 
 ## Setup
  
-1. Install Python 3.x and pip
+1. Install Python 3.11 and pip
 2. Install virtualenv
-3. Activate the virtual environment: ```source .env/bin/activate```
+3. Create virtualenv for the project, f.e.: ```python -m venv .venv```
+4. Activate the virtual environment: ```source .venv/bin/activate```
+5. Install dependecies: ```pip install -r requirements.txt```
 
 ## Run
 
-```python speed_balls.py```
+```python src/pool_coach.py```
