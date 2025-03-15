@@ -5,7 +5,6 @@ from conf.constants import beep
 class SpeedPool:
 
     def __init__(self):
-        self.rack_start_time = time.perf_counter()
         self.rack_time = 0.0
         self.is_game_on = False
         self.rack_has_been_ready = False
@@ -14,7 +13,7 @@ class SpeedPool:
     def run_frame(self, vision_inference):
         unracked_ball_count = vision_inference.get_unracked_ball_count()
 
-        if vision_inference.is_rack_ready(unracked_ball_count):
+        if vision_inference.is_rack_ready():
             self.rack_has_been_ready = True
 
         if self.rack_has_been_ready and unracked_ball_count > 2 and not self.is_game_on:
@@ -28,13 +27,13 @@ class SpeedPool:
                     self.is_game_on = False
                     self.rack_has_been_ready = False
                     beep()
-                if vision_inference.is_rack_ready(unracked_ball_count):
+                if vision_inference.is_rack_ready():
                     self.is_game_on = False
                     self.rack_time = 0.0
 
         game_off_text = ''
         if self.rack_has_been_ready:
-            if (vision_inference.is_rack_ready(unracked_ball_count)
+            if (vision_inference.is_rack_ready()
                     and vision_inference.ball_count_average > vision_inference.min_ball_count_in_rack and not self.is_game_on):
                 game_off_text = f'RACK OF {math.ceil(vision_inference.ball_count_average - 1.0)} BALLS IS READY! '
 
