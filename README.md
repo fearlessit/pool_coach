@@ -2,12 +2,16 @@
 
 ## Setup
  
-1. Install Python 3.11 and pip
-2. Install virtualenv
-3. Create virtualenv for the project, f.e.: ```python -m venv .venv```
-4. Activate the virtual environment: ```source .venv/bin/activate```
-5. Install dependencies: ```pip install -r requirements.txt```
+1. Clone project from GitHub
+2. Install Python 3.11 and pip
+3. Install virtualenv
+4. Create virtualenv for the project, f.e.: ```python -m venv .venv```
+5. Activate the virtual environment: ```source .venv/bin/activate```
+6. Install dependencies: ```pip install -r requirements.txt```
 
 ## Run
+Activate virtual environment:
+```source .venv/bin/activate```
 
+Run Coach:
 ```python src/pool_coach.py```
