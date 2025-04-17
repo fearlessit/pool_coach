@@ -1,13 +1,9 @@
 import os
 
-import cv2
-
 # Input video capture parameter
 input_video_capture_parameter = 2 # Realtime webcam capture
 
-
 input_video_capture_parameter = "./assets/speed_pool.mp4"
-
 #input_video_capture_parameter = "./assets/videos/sampo_ida_nine.mp4")
 #input_video_capture_parameter = "./assets/videos/almost2.mp4")
 #input_video_capture_parameter = "./assets/videos/seiskaa.mkv")
