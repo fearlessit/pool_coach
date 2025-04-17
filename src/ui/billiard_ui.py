@@ -81,10 +81,14 @@ class BilliardUI:
             #label_size, base_line = cv2.getTextSize(ball_header_text, cv2.FONT_HERSHEY_DUPLEX, 0.9, 1)
             #label_ymin = max(ball.ymin, label_size[1] + 10)
             #cv2.rectangle(self.frame, (int(ball.xmin), int(label_ymin - label_size[1] - 10)), (int(ball.xmin + label_size[0]), int(label_ymin + base_line - 10)), BRIGHT_COLOR, cv2.FILLED)
-            if (ball.x < 1920-450):
-                cv2.putText(self.frame, ball_header_text, (int(ball.x), int(ball.y)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (256, 256, 256), 3)
-            else:
-                cv2.putText(self.frame, ball_header_text, (int(ball.x)-450, int(ball.y)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (256, 256, 256), 3)
+
+            ###
+            #if (ball.x < 1920-450):
+                #cv2.putText(self.frame, ball_header_text, (int(ball.x), int(ball.y)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (256, 256, 256), 3)
+            #else:
+                #cv2.putText(self.frame, ball_header_text, (int(ball.x)-450, int(ball.y)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (256, 256, 256), 3)
+            ###
+
             #cv2.circle(self.frame, (int(ball.x), int(ball.y)), 3, BRIGHT_COLOR, 3)
 
     def draw_info_texts(self, game_text, draw_flag1=False, draw_flag2=False):

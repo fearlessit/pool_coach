@@ -6,15 +6,16 @@ import cv2
 
 input_video_capture_parameter = 2 # Realtime webcam capture
 
-#input_video_capture_parameter = os.path.expanduser("~/videos/almost2.mp4")
-#input_video_capture_parameter = os.path.expanduser("~/videos/seiskaa.mkv")
-input_video_capture_parameter = "./assets/ykxkax.mp4"
-#input_video_capture_parameter = os.path.expanduser("~/videos/lineup.mkv")
+input_video_capture_parameter = "./assets/speed_pool.mp4"
+#input_video_capture_parameter = "./assets/videos/almost2.mp4")
+#input_video_capture_parameter = "./assets/videos/seiskaa.mkv")
+#input_video_capture_parameter = "./assets/ykxkax.mp4"
+#input_video_capture_parameter = "./assets/videos/lineup.mkv")
 #input_video_capture_parameter = "./assets/seven.mkv"
-#input_video_capture_parameter = os.path.expanduser("~/videos/lineup.mkv")
-#input_video_capture_parameter = os.path.expanduser("~/videos/liiketunnistus.mkv")
+#input_video_capture_parameter = "./assets/videos/lineup.mkv")
+#input_video_capture_parameter = "./assets/videos/liiketunnistus.mkv")
 #input_video_capture_parameter = "./assets/speed_pool.mp4"
-#input_video_capture_parameter = os.path.expanduser("~/videos/eight.mp4")
+#input_video_capture_parameter = "./assets/videos/eight.mp4")
 
 # Define configuration parameters
 DETECTION_THRESHOLD = 0.5

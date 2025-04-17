@@ -34,14 +34,15 @@ while True:
     is_ball_moving = billiard_inference.is_any_ball_moving()
 
     ui.highlight_detected_balls()
-    if collisions.predict_collisions(billiard_inference):
-        flag_collided = 10
 
-    if not billiard_inference.is_rack_ready():
-        collisions.draw_collision_markings(frame)
+    #if collisions.predict_collisions(billiard_inference):
+        #flag_collided = 10
+    #if not billiard_inference.is_rack_ready():
+        #collisions.draw_collision_markings(frame)
 
     flag_collided -= 1
-    ui.draw_info_texts(game_info_text, is_ball_moving, flag_collided > 0)
+    #ui.draw_info_texts(game_info_text, is_ball_moving, flag_collided > 0)
+    ui.draw_info_texts(game_info_text, is_ball_moving)
 
     ui.show_frame()
     ui.wait_and_react_keyboard_input()
