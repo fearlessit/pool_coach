@@ -4,3 +4,4 @@ __pycache__/
 model/**/
 /yolo11n.pt
 /build/
+/assets/videos/
