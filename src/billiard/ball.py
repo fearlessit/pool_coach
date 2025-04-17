@@ -6,7 +6,7 @@ from utils.last_values import LastValues
 
 
 class BilliardBall:
-    def __init__(self, ball_id, xmin, ymin, xmax, ymax, detection_confidence,target_temp=None):
+    def __init__(self, ball_id, xmin, ymin, xmax, ymax, detection_confidence):
         self.detection_confidence = detection_confidence
         self.diameter:float = math.dist((xmin, ymin), (xmax, ymax))
         self.xmin:int = xmin
@@ -16,11 +16,11 @@ class BilliardBall:
         self.x:int = (xmin+xmax) / 2.0
         self.y:int = (ymin+ymax) / 2.0
         self.id = ball_id
-        self.previous_balls = target_temp
         #self.prev_x = LastValues(int(INIT_FPS/2))
         #self.prev_y = LastValues(int(INIT_FPS/2))
         self.prev_x = None
         self.prev_y = None
+        self.velocity = (0.0, 0.0)
 
     def has_neighbour_ball(self, balls):
         max_diameter = max(b.diameter for b in balls) if balls else 0.0

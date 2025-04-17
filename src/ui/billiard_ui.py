@@ -2,7 +2,6 @@ import sys
 import time
 import cv2
 
-from ui.gfx.load_split_sprite_sheet import SplitSpriteSheet
 from utils.last_values import LastValues
 from conf.constants import *
 
@@ -15,17 +14,13 @@ class BilliardUI:
         self.frame_rate_buffer = []
         self.fps_avg = LastValues(window_size=200)
         self.t_start = 0
-        self.fps = int(video_capture.get(cv2.CAP_PROP_FPS) if video_capture.get(cv2.CAP_PROP_FPS) > 0 else START_FPS)
+        self.fps = int(video_capture.get(cv2.CAP_PROP_FPS) if video_capture.get(cv2.CAP_PROP_FPS) > 0 else INIT_FPS)
         self.frame_duration = 1.0 / self.fps
         self.frame_start = 0.0
         self.frame_sleep_time = 1
         self.exit_text = ""
         self.frame = None
         self.i = 0
-
-        #pygame.init()
-        #self.explosion_sprite = SplitSpriteSheet('assets/explosion_strip13.png', 196, 190).frames
-        #self.screen = pygame.display.set_mode((1920, 1080))
 
     def read_frame(self):
         self.t_start = time.perf_counter()
@@ -36,15 +31,9 @@ class BilliardUI:
             self.force_exit()
         return self.frame
 
-
     def show_frame(self):
-        #frame_rgb = cv2.cvtColor(self.explosion_sprite, cv2.COLOR_BGR2RGB)
-        #frame_suraface = pygame.surfarray.make_surface(frame_rgb)
-        #self.screen.blit(frame_suraface, (0, 0))
-        #pygame.display.flip()
 
         cv2.imshow('Billiard Coach', self.frame)  # Display image
-
 
         # Calculate FPS for this frame and update the FPS average
         t_stop = time.perf_counter()
@@ -76,16 +65,13 @@ class BilliardUI:
         cv2.annotate = lambda frame, detections, names: labels
         balls = self.vision_inference.balls
         for ball in balls:
-            cv2.rectangle(self.frame, (int(ball.xmin), int(ball.ymin)), (int(ball.xmax), int(ball.ymax)), BRIGHT_COLOR, 5)
-            ball_header_text = f"id={ball.id}, r={(ball.get_radius()):0.0f}, conf={ball.detection_confidence:0.2f} ({ball.y:0.0f},{ball.x:0.0f})"
-            #label_size, base_line = cv2.getTextSize(ball_header_text, cv2.FONT_HERSHEY_DUPLEX, 0.9, 1)
-            #label_ymin = max(ball.ymin, label_size[1] + 10)
-            #cv2.rectangle(self.frame, (int(ball.xmin), int(label_ymin - label_size[1] - 10)), (int(ball.xmin + label_size[0]), int(label_ymin + base_line - 10)), BRIGHT_COLOR, cv2.FILLED)
-            if (ball.x < 1920-450):
-                cv2.putText(self.frame, ball_header_text, (int(ball.x), int(ball.y)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (256, 256, 256), 3)
-            else:
-                cv2.putText(self.frame, ball_header_text, (int(ball.x)-450, int(ball.y)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (256, 256, 256), 3)
-            #cv2.circle(self.frame, (int(ball.x), int(ball.y)), 3, BRIGHT_COLOR, 3)
+            cv2.rectangle(self.frame, (int(ball.xmin), int(ball.ymin)), (int(ball.xmax), int(ball.ymax)), (0,0,0), 2)
+            #ball_header_text = f"id={ball.id}, r={(ball.get_radius()):0.0f}, conf={ball.detection_confidence:0.2f} ({ball.y:0.0f},{ball.x:0.0f})"
+            ball_header_text = f"{ball.id}"
+            label_size, base_line = cv2.getTextSize(ball_header_text, cv2.FONT_HERSHEY_DUPLEX, 0.9, 1)
+            label_ymin = max(ball.ymin, label_size[1] + 10)
+            #cv2.rectangle(self.frame, (int(ball.xmax -5), int(label_ymin - label_size[1] - 17)), (int(ball.xmax + label_size[0]+10), int(label_ymin + base_line-10)), (150,130,130), cv2.FILLED)
+            cv2.putText(self.frame, ball_header_text, (int(ball.x -(ball.get_radius()/2 if ball.id < 10 else ball.get_radius())), int(ball.y +ball.get_radius()/2)), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1.2, (0, 256, 256), 3)
 
     def draw_info_texts(self, game_text, draw_flag1=False, draw_flag2=False):
         avg_ball_count = self.vision_inference.last_ball_counts.get_average()

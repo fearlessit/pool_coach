@@ -6,7 +6,7 @@ class Collisions:
     def __init__(self):
         self.collisionMarkingPoints = []
 
-    def predict_collisions(self, billiard_inference):
+    def is_any_colliding_balls(self, billiard_inference): ## TODO: optimointi
         balls = billiard_inference.balls
         is_moving = billiard_inference.is_moving
         for i, ball1 in enumerate(balls):
@@ -18,8 +18,6 @@ class Collisions:
                     # collision should be detected also including the velocity (speed and direction) of the balls
                     c = 1.0
                     collision_distance = (ball1.get_radius() + ball2.get_radius()) * c
-
-
                     if distance_between_balls <= collision_distance:
                         self.collisionMarkingPoints.append(( (ball1.x+ball2.x)/2, (ball1.y+ball2.y)/2,  30))
         return len(self.collisionMarkingPoints) > 0

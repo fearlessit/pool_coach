@@ -1,0 +1,11 @@
+__pycache__/
+build/
+assets/videos/**/
+
+*.egg-info
+*.weights
+*.t7
+*.mp4
+*.avi
+*.so
+*.txt
