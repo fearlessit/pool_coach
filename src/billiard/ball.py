@@ -17,10 +17,9 @@ class BilliardBall:
         self.y:int = (ymin+ymax) / 2.0
         self.id = ball_id
         self.previous_balls = target_temp
-        #self.prev_x = LastValues(int(INIT_FPS/2))
-        #self.prev_y = LastValues(int(INIT_FPS/2))
-        self.prev_x = None
-        self.prev_y = None
+        self.velocity_x:float = 0.0
+        self.velocity_y:float = 0.0
+        self.speed = 0.0
 
     def has_neighbour_ball(self, balls):
         max_diameter = max(b.diameter for b in balls) if balls else 0.0

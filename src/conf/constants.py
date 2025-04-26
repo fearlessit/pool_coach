@@ -6,16 +6,16 @@ import cv2
 
 input_video_capture_parameter = 2 # Realtime webcam capture
 
-input_video_capture_parameter = "./assets/speed_pool.mp4"
-#input_video_capture_parameter = "./assets/videos/almost2.mp4")
-#input_video_capture_parameter = "./assets/videos/seiskaa.mkv")
-#input_video_capture_parameter = "./assets/ykxkax.mp4"
-#input_video_capture_parameter = "./assets/videos/lineup.mkv")
-#input_video_capture_parameter = "./assets/seven.mkv"
-#input_video_capture_parameter = "./assets/videos/lineup.mkv")
-#input_video_capture_parameter = "./assets/videos/liiketunnistus.mkv")
 #input_video_capture_parameter = "./assets/speed_pool.mp4"
-#input_video_capture_parameter = "./assets/videos/eight.mp4")
+#input_video_capture_parameter = "./assets/videos/almost2.mp4"
+#input_video_capture_parameter = "./assets/videos/seiskaa.mkv"
+#input_video_capture_parameter = "./assets/ykxkax.mp4"
+#input_video_capture_parameter = "./assets/videos/lineup.mkv"
+#input_video_capture_parameter = "./assets/seven.mkv"
+#input_video_capture_parameter = "./assets/videos/lineup.mkv"
+#input_video_capture_parameter = "./assets/videos/liiketunnistus.mkv"
+#input_video_capture_parameter = "./assets/speed_pool.mp4"
+#input_video_capture_parameter = "./assets/videos/eight.mp4"
 
 # Define configuration parameters
 DETECTION_THRESHOLD = 0.5
@@ -24,9 +24,11 @@ MOVEMENT_THRESHOLD = 1.0
 MIN_BALL_COUNT_IN_RACK = 9
 VERBOSE = False
 BALL_DIAMETER = 50
+BALL_TAIL_BUFFER_SIZE = 500
+BALL_MOVEMENT_THRESHOLD = 0.015
 # Define hard coded constants
 
-INIT_FPS = 30
+INIT_FPS = 60
 BOUNDING_BOX_COLORS = [(164, 120, 87), (68, 148, 228), (93, 97, 209), (178, 182, 133), (88, 159, 106), (96,202,231), (159,124,168), (169,162,241), (98,118,150), (172,176,184)]
 
 MODEL_DIR = "model/best_weights.pt"

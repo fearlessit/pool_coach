@@ -19,6 +19,7 @@ class StableChange:
         stable_change = self.frame_count % self.frame_count_to_wait == 0
         if stable_change:
             self.last_stable_value = value
+        return stable_change
 
     def stable_value(self, value):
         self.is_stable_change(value)
