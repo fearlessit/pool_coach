@@ -15,3 +15,7 @@ Activate virtual environment:
 
 Run Coach:
 ```python src/pool_coach.py```
+
+Demo
+
+- [Short demo, camera placement from above (real-time)](/doc/tracking_demo.mp4) 
